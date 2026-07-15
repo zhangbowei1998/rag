@@ -93,14 +93,15 @@ tests/
 ```json
 {
   "scripts": {
-    "typecheck": "pnpm -r exec tsc --noEmit",
-    "test": "vitest run",
-    "check": "pnpm run typecheck && pnpm run test",
-    "smoke": "vitest run tests/smoke",
-    "verify": "pnpm run check && pnpm run smoke"
+    "build": "pnpm --filter @rag-sdk/core build",
+    "typecheck": "pnpm --filter @rag-sdk/core typecheck",
+    "test": "pnpm --filter @rag-sdk/core test",
+    "verify": "pnpm run build && pnpm run typecheck && pnpm run test && pnpm --filter @rag-sdk/core demo"
   }
 }
 ```
+
+说明：上述为当前仓库已落地的最小基线；后续可在此基础上扩展 integration/smoke。
 
 ### 7.2 Package 脚本（建议契约）
 
