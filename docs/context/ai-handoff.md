@@ -1,4 +1,4 @@
-# RAG SDK AI 交接文档（Core v1 阶段）
+# RAG SDK AI 交接文档（Core + Indexing v1 阶段）
 
 ## 1. 文档目的
 
@@ -12,6 +12,9 @@
 - core 包已完成第一版共享契约实现（schema/types/interfaces/errors/pipeline）。
 - core 包已切换为 dist 导出，源码统一在 src。
 - core 包已补齐最小单元测试并通过验证。
+- indexing 包已完成第一版离线索引 MVP（runIndexing + 默认组件）。
+- indexing 包已切换为 dist 导出，源码统一在 src。
+- indexing 包已补齐最小单元测试与 demo 并通过验证。
 
 ## 3. Workspace 与目录约定
 
@@ -54,11 +57,11 @@ packages:
 
 - type: module
 - 默认采用 src 入口占位（初始化阶段）。
-- 已进入实现阶段的包可切换为 dist 导出（当前 core 已切换）。
+- 已进入实现阶段的包可切换为 dist 导出（当前 core、indexing 已切换）。
 
 ## 5. 代码现状与边界
 
-- core 包已具备可构建契约代码与最小 demo；其它包仍为占位入口。
+- core、indexing 包已具备可构建代码与最小 demo；其它包仍为占位入口。
 - 根目录已引入最小构建链路（typescript/tsup/tsx）与测试链路（vitest）。
 - docs 目录已建好分层结构，但大部分子目录尚待填充内容。
 
@@ -83,9 +86,17 @@ npx -y pnpm@9.15.9 run verify
 
 - 可完成 core 包 build + typecheck + test + demo 验证。
 
+补充（indexing）：
+
+```bash
+npx -y pnpm@9.15.9 --filter @rag-sdk/indexing test
+npx -y pnpm@9.15.9 --filter @rag-sdk/indexing demo
+```
+
 阶段快照：
 
 - docs/context/handoff-core-v1.md
+- docs/context/handoff-indexing-v1.md
 
 ## 7. 后续开发建议（给 AI）
 
@@ -101,6 +112,7 @@ npx -y pnpm@9.15.9 run verify
 - 是否避免了无关目录/依赖变更。
 - 是否更新了受影响文档。
 - 若修改 core，是否执行了 `npx -y pnpm@9.15.9 --filter @rag-sdk/core test`。
+- 若修改 indexing，是否执行了 `npx -y pnpm@9.15.9 --filter @rag-sdk/indexing test` 与 `demo`。
 
 ## 9. 依赖安装规范（必读）
 

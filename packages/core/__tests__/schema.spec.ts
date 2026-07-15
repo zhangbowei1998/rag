@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 
-import { ChunkSchema, QuerySchema, RAGResponseSchema } from "../src/spec";
+import {
+  ChunkSchema,
+  DocumentSchema,
+  QuerySchema,
+  RAGResponseSchema,
+  VectorSchema,
+} from "../src/spec";
 
 describe("core schema validation", () => {
   it("accepts a non-empty query", () => {
@@ -46,5 +52,29 @@ describe("core schema validation", () => {
     });
 
     expect(parsed.chunks).toHaveLength(1);
+  });
+
+  it("validates document shape", () => {
+    const parsed = DocumentSchema.parse({
+      id: "doc-1",
+      content: "hello",
+      metadata: {
+        source: "docs",
+      },
+    });
+
+    expect(parsed.id).toBe("doc-1");
+  });
+
+  it("validates vector shape", () => {
+    const parsed = VectorSchema.parse({
+      id: "vec-1",
+      values: [0.1, 0.2, 0.3],
+      metadata: {
+        documentId: "doc-1",
+      },
+    });
+
+    expect(parsed.values).toHaveLength(3);
   });
 });

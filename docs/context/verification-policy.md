@@ -93,15 +93,16 @@ tests/
 ```json
 {
   "scripts": {
-    "build": "pnpm --filter @rag-sdk/core build",
-    "typecheck": "pnpm --filter @rag-sdk/core typecheck",
-    "test": "pnpm --filter @rag-sdk/core test",
-    "verify": "pnpm run build && pnpm run typecheck && pnpm run test && pnpm --filter @rag-sdk/core demo"
+    "build": "pnpm --filter @rag-sdk/core build && pnpm --filter @rag-sdk/indexing build",
+    "typecheck": "pnpm --filter @rag-sdk/core typecheck && pnpm --filter @rag-sdk/indexing typecheck",
+    "test": "pnpm --filter @rag-sdk/core test && pnpm --filter @rag-sdk/indexing test",
+    "demo": "pnpm --filter @rag-sdk/core demo && pnpm --filter @rag-sdk/indexing demo",
+    "verify": "pnpm run build && pnpm run typecheck && pnpm run test && pnpm run demo"
   }
 }
 ```
 
-说明：上述为当前仓库已落地的最小基线；后续可在此基础上扩展 integration/smoke。
+说明：上述为当前仓库已落地的最小基线（core + indexing）；后续可在此基础上扩展 integration/smoke。
 
 ### 7.2 Package 脚本（建议契约）
 
