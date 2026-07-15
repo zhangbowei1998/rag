@@ -1,0 +1,19 @@
+lockfileVersion: '6.0'
+
+importers:
+
+  .: {}
+
+  packages/adapters: {}
+
+  packages/core: {}
+
+  packages/eval: {}
+
+  packages/indexing: {}
+
+  packages/observability: {}
+
+  packages/runtime: {}
+
+  packages/utils: {}

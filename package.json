@@ -1,0 +1,5 @@
+{
+  "name": "rag-monorepo",
+  "private": true,
+  "packageManager": "pnpm@8.0.0"
+}
