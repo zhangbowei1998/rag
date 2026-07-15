@@ -1,5 +1,17 @@
 {
   "name": "rag-monorepo",
   "private": true,
-  "packageManager": "pnpm@8.0.0"
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "build": "pnpm --filter @rag-sdk/core build",
+    "test": "pnpm --filter @rag-sdk/core test",
+    "typecheck": "pnpm --filter @rag-sdk/core typecheck",
+    "verify": "pnpm run build && pnpm run typecheck && pnpm run test && pnpm --filter @rag-sdk/core demo"
+  },
+  "devDependencies": {
+    "tsup": "^8.2.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.8"
+  }
 }
